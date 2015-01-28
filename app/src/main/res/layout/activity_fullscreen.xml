@@ -15,4 +15,12 @@
         android:id="@+id/iv_bbm_logo"
         android:layout_gravity="center"
         android:background="@drawable/bbm_logo"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_custom_logo"
+        android:layout_gravity="center"
+        android:visibility = "invisible"
+        android:background="@drawable/bbm_logo"/>
 </FrameLayout>

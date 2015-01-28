@@ -45,6 +45,8 @@ public class FullscreenActivity extends Activity {
      */
     private SystemUiHider mSystemUiHider;
 
+    private Animation myFadeInAnimation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +56,20 @@ public class FullscreenActivity extends Activity {
         //final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.logoscreen_content);
 
-        ImageView myImageView= (ImageView)findViewById(R.id.iv_bbm_logo);
-        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.logofadein);
-        myImageView.startAnimation(myFadeInAnimation);
+        ImageView bbmLogoView= (ImageView)findViewById(R.id.iv_bbm_logo);
+        ImageView customLogoView= (ImageView)findViewById(R.id.iv_custom_logo); //TODO: Change to Shop Custom Image in xml
 
+        myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.logofadein);
+        bbmLogoView.startAnimation(myFadeInAnimation);
+
+        customLogoView.setVisibility(View.INVISIBLE);
 
         contentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Log.d("FullscreenActivity","onclick");
                 Toast.makeText(FullscreenActivity.this.getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
+                ((ImageView)view).startAnimation(myFadeInAnimation);
             }
         });
 
