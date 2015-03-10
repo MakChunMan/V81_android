@@ -5,9 +5,13 @@ package com.imagsky.v81_android.domain;
  */
 
 import com.google.gson.annotations.Expose;
-import com.imagsky.v81_android.domain.SysObject;
+import com.imagsky.v81_android.R;
 
-public abstract class Module extends SysObject {
+import java.lang.Comparable;
+
+
+
+public abstract class Module extends SysObject implements Comparable<Module>{
 
     private static final long serialVersionUID = 1L;
 
@@ -60,5 +64,21 @@ public abstract class Module extends SysObject {
         this.modDisplayOrder = modDisplayOrder;
     }
 
+    public int compareTo(Module other){
+        // compareTo should return < 0 if this is supposed to be
+        // less than other, > 0 if this is supposed to be greater than
+        // other and 0 if they are supposed to be equal
+
+        return Double.compare(this.getModDisplayOrder(), other.getModDisplayOrder());
+    }
+
+    public int getDefaultModuleIconId(){
+        if(this.moduleType == ModuleTypes.ModAboutPage)
+            return R.drawable.icon_info;
+        else if(this.moduleType == ModuleTypes.ModForm)
+            return R.drawable.icon_form;
+        else
+            return R.drawable.icon_shop;
+    }
 }
 

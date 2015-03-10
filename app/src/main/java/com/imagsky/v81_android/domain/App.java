@@ -4,13 +4,13 @@ package com.imagsky.v81_android.domain;
  * Created by jasonmak on 29/1/2015.
  */
 
-        import java.util.ArrayList;
-        import java.util.Collection;
-        import java.util.Iterator;
-        import java.util.List;
-        import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.TreeMap;
 
-        import com.imagsky.v81_android.domain.SysObject;
+import com.imagsky.v81_android.domain.SysObject;
 
 public class App extends SysObject {
 
@@ -23,6 +23,12 @@ public class App extends SysObject {
     private int APP_TYPE; // 0 : Free
 
     private String APP_STATUS; //
+
+    private String APP_TEMPLATE;
+
+    private AppImage APP_MAINMENU_BG;
+
+    private AppImage APP_ICON;
 
     private Collection<Module> modules = new ArrayList<Module>();
 
@@ -41,6 +47,9 @@ public class App extends SysObject {
             aHt.put("APP_DESC", obj.APP_DESC);
             aHt.put("APP_TYPE", obj.APP_TYPE);
             aHt.put("APP_STATUS", obj.APP_STATUS);
+            aHt.put("APP_TEMPLATE",obj.APP_TEMPLATE);
+            aHt.put("APP_MAINMENU_BG",obj.APP_MAINMENU_BG);
+            aHt.put("APP_ICON", obj.APP_ICON);
             aHt.putAll(SysObject.getSysFields(obj));
         }
         return aHt;
@@ -89,17 +98,27 @@ public class App extends SysObject {
         APP_STATUS = aPP_STATUS;
     }
 
-    public void updateModule(Module newModule){
-        if(modules == null || modules.size()==0){
-            modules = new ArrayList();
-            modules.add(newModule);
-        } else {
-            Iterator<Module> it = modules.iterator();
-            while(it.hasNext()){
-
-            }
-        }
+    public String getAPP_TEMPLATE() {
+        return APP_TEMPLATE;
     }
 
+    public void setAPP_TEMPLATE(String APP_TEMPLATE) {
+        this.APP_TEMPLATE = APP_TEMPLATE;
+    }
 
+    public AppImage getAPP_MAINMENU_BG() {
+        return APP_MAINMENU_BG;
+    }
+
+    public void setAPP_MAINMENU_BG(AppImage APP_MAINMENU_BG) {
+        this.APP_MAINMENU_BG = APP_MAINMENU_BG;
+    }
+
+    public AppImage getAPP_ICON() {
+        return APP_ICON;
+    }
+
+    public void setAPP_ICON(AppImage APP_ICON) {
+        this.APP_ICON = APP_ICON;
+    }
 }
